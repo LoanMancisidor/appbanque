@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6fa;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    color: #2f3640;
+}
+
+a {
+    text-decoration: none;
+    color: #0097e6;
+}
+
+a:hover {
+    color: #40739e;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #dcdde1;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f1f2f6;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+    padding: 8px;
+    width: 250px;
+    margin-bottom: 10px;
+    border: 1px solid #dcdde1;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #0097e6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #40739e;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+}
