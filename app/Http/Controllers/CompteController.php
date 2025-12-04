@@ -50,11 +50,6 @@ class CompteController extends Controller
                 throw new \Exception("Solde insuffisant");
             }
 
-            // Mise à jour du solde côté code
-            $compte->solde -= $request->montant;
-            $compte->save();
-
-            // Insertion dans Operation
             Operation::create([
                 'compte_id' => $id,
                 'type_op'   => 'WITHDRAW',
@@ -70,6 +65,7 @@ class CompteController extends Controller
 
         return back();
     }
+
 
     public function create()
     {
