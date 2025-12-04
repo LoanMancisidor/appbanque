@@ -1,27 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Connexion</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <title>Connexion - App Banque</title>
+
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <h1>Connexion</h1>
 
-    @if(session('error'))
-        <p style="color:red">{{ session('error') }}</p>
-    @endif
+<div class="container">
+    <div class="card" style="max-width:450px; margin:auto; margin-top:50px;">
+        <h2>Connexion</h2>
 
-    <form method="POST" action="/login">
-        @csrf
-        <label>Login :</label>
-        <input type="text" name="login" required><br><br>
+        {{-- Message d'erreur --}}
+        @if(session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
 
-        <label>Mot de passe :</label>
-        <input type="password" name="mdp" required><br><br>
+        <form action="/login" method="POST">
+            @csrf
 
-        <button type="submit">Se connecter</button>
-    </form>
+            <label>Login</label>
+            <input type="text" name="login" required>
+
+            <label>Mot de passe</label>
+            <input type="password" name="mdp" required>
+
+            <button class="btn btn-primary" style="margin-top: 15px; width:100%;">
+                Se connecter
+            </button>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>

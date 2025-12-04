@@ -1,35 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Ajouter utilisateur</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
+@extends('layout')
 
-<h1>Créer un utilisateur</h1>
+@section('content')
 
-<form method="POST" action="/ajout-utilisateur">
-    @csrf
+<div class="card">
+    <h2>Ajouter un utilisateur</h2>
 
-    <label>Login</label>
-    <input type="text" name="login" required><br><br>
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
 
-    <label>Mot de passe</label>
-    <input type="password" name="mdp" required><br><br>
+    @if($errors->any())
+        <div class="alert alert-danger">
+            @foreach($errors->all() as $error)
+                • {{ $error }} <br>
+            @endforeach
+        </div>
+    @endif
 
-    <label>Rôle</label>
-    <select name="role">
-        <option value="admin">Admin</option>
-        <option value="agent">Agent</option>
-    </select><br><br>
+    <form action="/utilisateurs/add" method="POST">
+        @csrf
 
-    <button>Créer</button>
-</form>
+        <label>Login</label>
+        <input type="text" name="login" required>
 
-<br>
-<a href="/dashboard">Retour</a>
+        <label>Mot de passe</label>
+        <input type="password" name="mot_de_passe" required>
 
-</body>
-</html>
+        <label>Rôle</label>
+        <select name="role" required>
+            <option value="agent">Agent</option>
+            <option value="admin">Admin</option>
+        </select>
+
+        <button class="btn btn-primary" style="margin-top: 10px;">Créer l'utilisateur</button>
+    </form>
+</div>
+
+@endsection

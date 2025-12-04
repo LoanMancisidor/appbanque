@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Ajouter un compte</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
+@extends('layout')
 
-<h1>Créer un compte</h1>
+@section('content')
 
-<form method="POST" action="/ajout-compte">
-    @csrf
+<div class="card" style="max-width:600px; margin:auto;">
+    <h2>Ajouter un compte</h2>
 
-    <label>Numéro de compte</label>
-    <input type="text" name="numero_compte" required><br><br>
+    <form action="/comptes/add" method="POST">
+        @csrf
 
-    <label>Solde initial</label>
-    <input type="number" name="solde" step="0.01" required><br><br>
+        <label>Numéro du compte</label>
+        <input type="text" name="numero_compte" required>
 
-    <button>Créer</button>
-</form>
+        <label>Solde initial (€)</label>
+        <input type="number" step="0.01" name="solde" required>
 
-<br>
-<a href="/dashboard">Retour</a>
+        <button class="btn btn-primary" style="margin-top: 10px;">Créer le compte</button>
+    </form>
 
-</body>
-</html>
+</div>
+
+@endsection

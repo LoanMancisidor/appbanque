@@ -1,36 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Liste des comptes</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
+@extends('layout')
 
-<h1>Liste des comptes</h1>
+@section('content')
 
-<table border="1">
-    <tr>
-        <th>Numéro</th>
-        <th>Solde</th>
-        <th>Actions</th>
-    </tr>
+<div class="card">
+    <h2>Liste des comptes</h2>
 
-    @foreach($comptes as $compte)
-        <tr>
-            <td>{{ $compte->numero_compte }}</td>
-            <td>{{ $compte->solde }} €</td>
-            <td>
-                <a href="/compte/{{ $compte->id }}/operations">Voir opérations</a>
-            </td>
-        </tr>
-    @endforeach
+    <a href="/comptes/create" class="btn btn-primary" style="margin-bottom:15px;">
+        + Ajouter un compte
+    </a>
 
-</table>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Numéro</th>
+                <th>Solde (€)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
 
-<br>
-<a href="/dashboard">Retour</a>
+        <tbody>
+            @foreach($comptes as $compte)
+                <tr>
+                    <td>{{ $compte->id }}</td>
+                    <td>{{ $compte->numero_compte }}</td>
+                    <td><strong>{{ number_format($compte->solde, 2, ',', ' ') }} €</strong></td>
+                    <td>
+                        <a class="btn btn-primary" href="/comptes/{{ $compte->id }}/operations">
+                            Voir opérations
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 
-</body>
-</html>
+@endsection

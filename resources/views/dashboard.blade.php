@@ -1,27 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Menu</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
+@extends('layout')
 
-<h1>Bienvenue {{ $utilisateurs->login }} ({{ $utilisateurs->role }})</h1>
+@section('content')
 
-<h2>Actions disponibles</h2>
+<div class="card">
+    <h2>Tableau de bord</h2>
 
-<ul>
-    <li><a href="/comptes">Voir les comptes</a></li>
+    <p>Bienvenue <strong>{{ session('user')->login }}</strong> 👋</p>
 
-    @if($utilisateurs->role === 'admin')
-        <li><a href="/ajout-compte">Ajouter un compte</a></li>
-        <li><a href="/ajout-utilisateur">Créer un utilisateur</a></li>
-    @endif
-</ul>
+    <div style="margin-top:20px;">
 
-<a href="/logout">Déconnexion</a>
+        <a href="/comptes" class="btn btn-primary" style="margin-bottom:10px; display:block; text-align:center;">
+            📘 Liste des comptes
+        </a>
 
-</body>
-</html>
+        @if(session('user')->role === 'admin')
+            <a href="/comptes/create" class="btn btn-outline" style="margin-bottom:10px; display:block; text-align:center;">
+                ➕ Ajouter un compte
+            </a>
+
+            <a href="/utilisateurs/add" class="btn btn-outline" style="margin-bottom:10px; display:block; text-align:center;">
+                👤 Ajouter un utilisateur
+            </a>
+        @endif
+
+    </div>
+
+</div>
+
+@endsection
