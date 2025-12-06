@@ -18,7 +18,7 @@
                 ➕ Ajouter un compte
             </a>
 
-            <a href="/utilisateurs/add" class="btn btn-outline" style="margin-bottom:10px; display:block; text-align:center;">
+            <a href="/ajout-utilisateur" class="btn btn-outline" style="margin-bottom:10px; display:block; text-align:center;">
                 👤 Ajouter un utilisateur
             </a>
         @endif

@@ -14,11 +14,12 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/comptes', [CompteController::class, 'index']);
 Route::get('/comptes/{id}/operations', [CompteController::class, 'showOperations']);
-Route::post('/comptes/{id}/depot', [CompteController::class, 'depot']);
-Route::post('/comptes/{id}/retrait', [CompteController::class, 'retrait']);
+Route::post('/compte/{id}/depot', [CompteController::class, 'depot']);
+Route::post('/compte/{id}/retrait', [CompteController::class, 'retrait']);
 
 Route::get('/comptes/create', [CompteController::class, 'create']);
 Route::post('/comptes/create', [CompteController::class, 'store']);
+
 
 Route::get('/ajout-utilisateur', [UtilisateurController::class, 'create']);
 Route::post('/ajout-utilisateur', [UtilisateurController::class, 'store']);

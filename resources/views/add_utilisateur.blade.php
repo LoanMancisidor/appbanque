@@ -17,7 +17,7 @@
         </div>
     @endif
 
-    <form action="/utilisateurs/add" method="POST">
+    <form action="/ajout-utilisateur" method="POST">
         @csrf
 
         <label>Login</label>

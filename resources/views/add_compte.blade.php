@@ -5,7 +5,7 @@
 <div class="card" style="max-width:600px; margin:auto;">
     <h2>Ajouter un compte</h2>
 
-    <form action="/comptes/add" method="POST">
+    <form action="/comptes/create" method="POST">
         @csrf
 
         <label>Numéro du compte</label>
